@@ -1,6 +1,6 @@
 name: GitHub Actions Practica
 
-on: 
+on:
   push:
 
 jobs:
@@ -14,8 +14,8 @@ jobs:
       - name: Mostrar información del runner
         run: echo "El trabajo se está ejecutando en un servidor ${{ runner.os }} hospedado en GitHub"
 
-      - name: Mostrar información de la rama y repositorio
-        run: echo "El nombre de la rama es: ${{ github.ref }} y tu repositorio es: ${{ github.repository }}"
+      - name: Mostrar información de rama y repositorio
+        run: echo "El nombre de la rama es: ${{ github.ref }} y el repositorio es: ${{ github.repository }}"
 
       - name: Verificar código del repositorio
         uses: actions/checkout@v2
@@ -23,4 +23,8 @@ jobs:
       - name: Confirmar clonación
         run: echo "El repositorio ${{ github.repository }} ha sido clonado al runner"
 
-      - name: Listar archivos del reposi
+      - name: Listar archivos del repositorio
+        run: ls ${{ github.workspace }}
+
+      - name: Mostrar estado final
+        run: echo "El estado del trabajo es: ${{ job.status }}"
